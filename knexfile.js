@@ -1,11 +1,13 @@
 // Update with your config settings.
 
 module.exports = {
-
   development: {
-    client: 'db',
+    client: 'pg',
     connection: {
-      filename: 'postgres://localhost:5433/demo'
+      host: '127.0.0.1',
+      user: 'postgres',
+      password: 'postgres',
+      database: 'web_test'
     }
   }
 };
