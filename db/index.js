@@ -10,5 +10,11 @@ module.exports = {
   },
   getSticker(id) {
     return connection('sticker').where('id', id);
+  },
+
+  deleteSticker(id) {
+    return connection('sticker')
+      .where('id', id)
+      .del();
   }
 };
