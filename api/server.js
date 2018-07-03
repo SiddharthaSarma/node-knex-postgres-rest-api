@@ -9,6 +9,9 @@ app.use(cors());
 router.get('/', (_, res) => {
   db.getAllStickers().then(stickers => res.json(stickers));
 });
+router.get('/:stickerId', (req, res) => {
+  db.getSticker(req.params.stickerId).then(stickers => res.json(stickers));
+});
 app.use('/api/v1/stickers', router);
 
 // Handle 404 and errors

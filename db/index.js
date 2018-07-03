@@ -7,5 +7,8 @@ const connection = knex(config[environment]);
 module.exports = {
   getAllStickers() {
     return connection('sticker');
+  },
+  getSticker(id) {
+    return connection('sticker').where('id', id);
   }
 };
