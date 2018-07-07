@@ -1,9 +1,14 @@
 const express = require('express');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 const app = express();
 const port = process.env.PORT || 8000;
 const router = require('../routes');
+
+// middleware
 app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/api/v1/stickers', router);
 
@@ -24,6 +29,8 @@ app.use((err, req, res, next) => {
     }
   });
 });
+
+// Fire up server
 app.listen(port, () => {
   console.log(`Server is running at port ${port}`);
 });

@@ -8,6 +8,7 @@ module.exports = {
   getAllStickers() {
     return connection('sticker');
   },
+
   getSticker(id) {
     return connection('sticker').where('id', id);
   },
@@ -16,5 +17,9 @@ module.exports = {
     return connection('sticker')
       .where('id', id)
       .del();
+  },
+
+  insertSticker(sticker) {
+    return connection('sticker').insert(sticker, '*');
   }
 };

@@ -11,5 +11,15 @@ router.get('/:stickerId', (req, res) => {
 router.delete('/:stickerId', (req, res) => {
   db.deleteSticker(req.params.stickerId).then(sticker => res.json(sticker));
 });
+router.post('/', (req, res) => {
+  const { title, description, rating, url } = req.body;
+  const data = {
+    title,
+    description,
+    rating,
+    url
+  };
+  db.insertSticker(data).then(sticker => res.json(sticker));
+});
 
 module.exports = router;
