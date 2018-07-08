@@ -21,6 +21,15 @@ router.get('/:stickerId', (req, res) => {
 router.delete('/:stickerId', (req, res) => {
   db.deleteSticker(req.params.stickerId).then(sticker => res.json(sticker));
 });
+router.put('/:stickerId', (req, res, next) => {
+  if (validSticker(req.body)) {
+    db.updateSticker(req.params.stickerId, req.body).then(stickers => {
+      res.json(stickers[0]);
+    });
+  } else {
+    next(new Error('Invalid sticker'));
+  }
+});
 router.post('/', (req, res, next) => {
   if (!validSticker(req.body)) {
     next(new Error('Invalid sticker'));
